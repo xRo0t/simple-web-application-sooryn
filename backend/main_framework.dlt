@@ -1,0 +1,29 @@
+import std
+
+fun desktop_ping(name: str, payload: str) -> str:
+    print(@"framework command: {name}")
+    print(@"framework payload: {payload}")
+    return "{\"ok\":true,\"message\":\"framework routed to Dolet\"}"
+
+fun desktop_info(name: str, payload: str) -> str:
+    print(@"framework command: {name}")
+    print(@"framework payload: {payload}")
+    return "{\"ok\":true,\"name\":\"simple-web-application-sooryn\"}"
+
+app: DesktopApp = DesktopApp.create("simple-web-application-sooryn", "frontend/index.html")
+app.command("ping", desktop_ping as i64)
+app.command("app.info", desktop_info as i64)
+
+init_code: i32 = CefNative.init()
+print(@"cef init: {init_code}")
+
+count: i32 = app.ipc.count()
+print(@"registered count: {count}")
+
+response: str = app.invoke_for_test("ping", "{\"from\":\"framework-smoke\"}")
+print(@"framework response: {response}")
+
+info_response: str = app.invoke_for_test("app.info", "{\"from\":\"framework-smoke\"}")
+print(@"framework info: {info_response}")
+
+app.run()

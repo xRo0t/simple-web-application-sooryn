@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sooryn</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="rail" aria-label="Primary navigation">
+        <div class="brand">
+          <span class="brand-mark">S</span>
+          <span>Sooryn</span>
+        </div>
+        <nav class="nav-list">
+          <button class="nav-item active" type="button" aria-label="Dashboard">Dashboard</button>
+          <button class="nav-item" type="button" aria-label="Files">Files</button>
+          <button class="nav-item" type="button" aria-label="Settings">Settings</button>
+        </nav>
+        <div class="rail-status">
+          <span class="status-dot"></span>
+          <span id="bridge-status">Connecting</span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="section-label">Runtime</p>
+            <h1>Desktop Control</h1>
+          </div>
+          <div class="actions">
+            <button id="refresh-info" class="icon-button" type="button" aria-label="Refresh app info" title="Refresh app info">R</button>
+            <button id="ping" class="primary-button" type="button">Run Check</button>
+          </div>
+        </header>
+
+        <section class="summary-grid" aria-label="Runtime summary">
+          <article class="metric">
+            <span class="metric-label">Backend</span>
+            <strong id="backend-name">Dolet</strong>
+            <small id="backend-mode">waiting</small>
+          </article>
+          <article class="metric">
+            <span class="metric-label">Bridge</span>
+            <strong id="bridge-mode">CEF</strong>
+            <small id="last-run">not run</small>
+          </article>
+          <article class="metric">
+            <span class="metric-label">Window</span>
+            <strong>Native</strong>
+            <small>Chromium embedded</small>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="work-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Jobs</p>
+                <h2>Build Queue</h2>
+              </div>
+              <span class="pill">Live</span>
+            </div>
+            <div class="job-list">
+              <button class="job selected" type="button">
+                <span class="job-icon">01</span>
+                <span>
+                  <strong>Compile backend</strong>
+                  <small>Dolet command route</small>
+                </span>
+                <span class="job-state">Ready</span>
+              </button>
+              <button class="job" type="button">
+                <span class="job-icon">02</span>
+                <span>
+                  <strong>Render interface</strong>
+                  <small>HTML and CSS surface</small>
+                </span>
+                <span class="job-state muted">Idle</span>
+              </button>
+              <button class="job" type="button">
+                <span class="job-icon">03</span>
+                <span>
+                  <strong>Package runtime</strong>
+                  <small>CEF resources and app files</small>
+                </span>
+                <span class="job-state muted">Idle</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="work-panel response-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-label">Response</p>
+                <h2>Dolet IPC</h2>
+              </div>
+              <span id="response-chip" class="pill neutral">Waiting</span>
+            </div>
+            <pre id="output">{
+  "status": "ready"
+}</pre>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
