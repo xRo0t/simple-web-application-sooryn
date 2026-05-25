@@ -1,4 +1,4 @@
 name = simple-web-application-sooryn
 type = desktop
-backend = backend/main_framework.dlt
+backend = backend/main.dlt
 frontend = frontend

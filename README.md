@@ -3,6 +3,12 @@
 Example Sooryn desktop app with a Dolet backend and HTML/CSS/JavaScript
 frontend.
 
+The app entry is:
+
+```text
+backend/main.dlt
+```
+
 Run from this folder after installing the Sooryn CLI:
 
 ```powershell
